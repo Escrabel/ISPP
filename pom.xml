@@ -73,22 +73,11 @@
 			</plugin>
 
 			<!-- Population -->
-
+			
 			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>exec-maven-plugin</artifactId>
-				<version>1.1</version>
-				<executions>
-					<execution>
-						<phase>install</phase>
-						<goals>
-							<goal>java</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<mainClass>utilities.PopulateDatabase</mainClass>
-				</configuration>
+   				<groupId>org.codehaus.mojo</groupId>
+   				<artifactId>exec-maven-plugin</artifactId>
+    				<version>1.2</version>
 			</plugin>
 
 			<!-- Tomcat 7 -->
