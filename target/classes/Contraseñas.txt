@@ -1,0 +1,45 @@
+Admin -> Fucaruy2019_Admin
+
+Customer -> 2019_CuSTOmer123
+
+Tattooist -> 2019_TaTTOOist_123
+
+
+CLIENTES 
+
+usuario:Rocio contraseña: RocIIO_2019_Fucaruy
+
+usuario: Mansanca contraseña: 2019_ManNSanCa_GuaTeMala123
+
+usuario: fraguica contraseña: 2019_FraGuICa_GuaTeMala123
+
+usuario: ancoro contraseña: 2019_AnRoRo_GuaTeMala123
+
+usuario: rociogon contraseña: 2019_RoCiOgOn_GuaTeMala123
+
+usuario: francisco contraseña: 2019_FrAncIsCO_GuaTeMala123
+
+usuario: antonio contraseña: 2019_AnToNiO_GuaTeMala123
+
+usuario: sheila contraseña: 2019_SheiLA_GuaTeMala123
+
+usuario: ruben contraseña: 2019_RuBEN_GuaTeMala123
+
+usuario: alejandro contraseña: 2019_AleJAndRo_GuaTeMala123
+
+
+
+
+
+
+
+
+TATUADORES
+
+usuario: k999c contraseña: JosSU_2019_GuaTeMala123
+
+usuario: galatic contraseña: GalaTiiC_2019_GuaTeMala123
+
+usuario: lamanonegra contraseña: La_ManNoONegRrA_GuaTeMala123
+
+usuario: terrero contraseña: TerRerOo_2019_GuaTeMala123

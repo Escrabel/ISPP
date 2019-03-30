@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- 
+ * tiles_es.xml
+
+ * Copyright (C) 2016 Universidad de Sevilla
+ * Author (A) 2012 Rafael Corchuelo (corchu@us.es)
+ * 
+ * The use of this project is hereby constrained to the conditions of the 
+ * TDG Licence, a copy of which you may download from 
+ * http://www.tdg-seville.info/License.html
+ -->
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+	<definition name="actor/message/edit" extends="master.page">
+		<put-attribute name="title" value="Enviar Mensaje" />
+		<put-attribute name="body" value="/views/message/edit.jsp" />
+	</definition>
+	
+	<definition name="actor/message/list" extends="master.page">
+		<put-attribute name="title" value="Listado de Mensajes" />
+		<put-attribute name="body" value="/views/message/list.jsp" />
+	</definition>
+	
+	<definition name="actor/message/move" extends="master.page">
+		<put-attribute name="title" value="Mover Mensaje" />
+		<put-attribute name="body" value="/views/message/move.jsp" />
+	</definition>
+	
+	<definition name="actor/message/details" extends="master.page">
+		<put-attribute name="title" value="Detalles de Mensaje" />
+		<put-attribute name="body" value="/views/message/details.jsp" />
+	</definition>
+	
+	<definition name="admin/broadcast/edit" extends="master.page">
+		<put-attribute name="title" value="Notificación global" />
+		<put-attribute name="body" value="/views/message/broadcast.jsp" />
+	</definition>
+</tiles-definitions>

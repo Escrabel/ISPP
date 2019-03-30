@@ -1,0 +1,1760 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- * PopulateDatabase.xml * * Copyright (C) 2017 Universidad de Sevilla 
+	* * The use of this project is hereby constrained to the conditions of the 
+	* TDG Licence, a copy of which you may download from * http://www.tdg-seville.info/License.html -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- Initialization for data source -->
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName"
+			value="com.mysql.jdbc.Driver" />
+		<property name="url"
+			value="jdbc:mysql://localhost:3306/Acme-Tattoo" />
+		<property name="username" value="acme-user" />
+		<property name="password" value="ACME-Us3r-P@ssw0rd" />
+	</bean>
+
+	<!-- Definition for studentJDBCTemplate bean -->
+	<bean id="TattooJDBCTemplate" class="utilities.TattooJDBCTemplate">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="Fecha" class="java.text.SimpleDateFormat">
+		<constructor-arg value="dd/MM/yyyy" />
+	</bean>
+
+	<bean id="FechaHHmm" class="java.text.SimpleDateFormat">
+		<constructor-arg value="dd/MM/yyyy HH:mm" />
+	</bean>
+
+	<bean id="FechaHHmmSS" class="java.text.SimpleDateFormat">
+		<constructor-arg value="dd/MM/yyyy HH:mm:SS" />
+	</bean>
+
+	<!-- User accounts -->
+
+	<bean id="userAccount1" class="security.UserAccount">
+		<property name="username" value="admin" />
+		<property name="password"
+			value="b6727623787c4b7424f71dd9294aa4c3" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ADMIN" />
+				</bean>
+			</list>
+		</property>
+
+		<property name="ban" value="false" />
+	</bean>
+
+	<bean id="userAccount2" class="security.UserAccount">
+		<property name="username" value="customer" />
+		<property name="password"
+			value="6e9642a745b7acbbff25c8e0eff256bc" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="CUSTOMER" />
+				</bean>
+			</list>
+		</property>
+		<property name="ban" value="false" />
+
+	</bean>
+
+	<!-- <bean id="userAccount3" class="security.UserAccount"> <property name="username" 
+		value="super" /> <property name="password" value="1b3231655cebb7a1f783eddf27d254ca" 
+		/> <property name="authorities"> <list> <bean class="security.Authority"> 
+		<property name="authority" value="ADMIN" /> </bean> <bean class="security.Authority"> 
+		<property name="authority" value="CUSTOMER" /> </bean> </list> </property> 
+		<property name="ban" value="false" /> </bean> -->
+
+	<bean id="userAccount4" class="security.UserAccount">
+		<property name="username" value="tattooist" />
+		<property name="password"
+			value="3bbc97971b1be708ca0b4579a0dddfab" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="TATTOOIST" />
+				</bean>
+			</list>
+		</property>
+		<property name="ban" value="false" />
+	</bean>
+
+	<!-- CLIENTES PILOTOS -->
+	<bean id="userAccount5" class="security.UserAccount">
+		<property name="username" value="Rocio" />
+		<property name="password"
+			value="ea6c497dd80c7e66bc40483cee422bfd" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="CUSTOMER" />
+				</bean>
+			</list>
+		</property>
+		<property name="ban" value="false" />
+	</bean>
+
+	<bean id="messageFolder700" class="domain.MessageFolder">
+		<property name="name" value="Papelera" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="customer4" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+
+	<bean id="messageFolder701" class="domain.MessageFolder">
+		<property name="name" value="Reclamaciones" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="customer4" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+	<bean id="messageFolder702" class="domain.MessageFolder">
+		<property name="name" value="Bandeja de entrada" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="customer4" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+	<bean id="messageFolder703" class="domain.MessageFolder">
+		<property name="name" value="Enviados" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="customer4" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+	<!-- TATUADORES PILOTO -->
+	<bean id="userAccount6" class="security.UserAccount">
+		<property name="username" value="k999c" />
+		<property name="password"
+			value="88474e7e834807f7aa2ee08bb72a80f3" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="TATTOOIST" />
+				</bean>
+			</list>
+		</property>
+		<property name="ban" value="false" />
+
+	</bean>
+
+	<bean id="userAccount7" class="security.UserAccount">
+		<property name="username" value="galatic" />
+		<property name="password"
+			value="c34d0925202e6bc5b5f4e4698c894697" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="TATTOOIST" />
+				</bean>
+			</list>
+		</property>
+		<property name="ban" value="false" />
+
+	</bean>
+
+	<bean id="userAccount8" class="security.UserAccount">
+		<property name="username" value="lamanonegra" />
+		<property name="password"
+			value="7ab2f0ac31483087c9782199ea419013" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="TATTOOIST" />
+				</bean>
+			</list>
+		</property>
+		<property name="ban" value="false" />
+
+	</bean>
+
+	<bean id="userAccount9" class="security.UserAccount">
+		<property name="username" value="terrero" />
+		<property name="password"
+			value="3dc61a1a431ccf3fd774318e4ae0079c" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="TATTOOIST" />
+				</bean>
+			</list>
+		</property>
+		<property name="ban" value="false" />
+
+	</bean>
+
+
+
+	<bean id="userAccount10" class="security.UserAccount">
+		<property name="username" value="mansanca" />
+		<property name="password"
+			value="819260050b9ea60610997929bd2e06c5" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="CUSTOMER" />
+				</bean>
+			</list>
+		</property>
+		<property name="ban" value="false" />
+
+	</bean>
+	<bean id="userAccount11" class="security.UserAccount">
+		<property name="username" value="fraguica" />
+		<property name="password"
+			value="5cb51d05aac8a0c92634107a36ff7dfd" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="CUSTOMER" />
+				</bean>
+			</list>
+		</property>
+		<property name="ban" value="false" />
+
+	</bean>
+	<bean id="userAccount12" class="security.UserAccount">
+		<property name="username" value="anroro" />
+		<property name="password"
+			value="9c9f70aaa295fcc7a3f0b722002b52ae" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="CUSTOMER" />
+				</bean>
+			</list>
+		</property>
+		<property name="ban" value="false" />
+
+	</bean>
+
+	<bean id="userAccount13" class="security.UserAccount">
+		<property name="username" value="rociogon" />
+		<property name="password"
+			value="109b3bfba875c6896da07298d0447b3e" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="CUSTOMER" />
+				</bean>
+			</list>
+		</property>
+		<property name="ban" value="false" />
+
+	</bean>
+
+	<bean id="userAccount14" class="security.UserAccount">
+		<property name="username" value="francisco" />
+		<property name="password"
+			value="16d56e0ce9f07539588deb14814c6056" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="CUSTOMER" />
+				</bean>
+			</list>
+		</property>
+		<property name="ban" value="false" />
+
+	</bean>
+
+	<bean id="userAccount15" class="security.UserAccount">
+		<property name="username" value="antonio" />
+		<property name="password"
+			value="4477497f2ea582bd55043f3e52e7cfe1" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="CUSTOMER" />
+				</bean>
+			</list>
+		</property>
+		<property name="ban" value="false" />
+
+	</bean>
+
+	<bean id="userAccount16" class="security.UserAccount">
+		<property name="username" value="sheila" />
+		<property name="password"
+			value="fb83b87f27a96a5cf11f3b9e35122103" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="CUSTOMER" />
+				</bean>
+			</list>
+		</property>
+		<property name="ban" value="false" />
+
+	</bean>
+
+	<bean id="userAccount17" class="security.UserAccount">
+		<property name="username" value="ruben" />
+		<property name="password"
+			value="6b3e24c394d079f42a65c202d910db0a" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="CUSTOMER" />
+				</bean>
+			</list>
+		</property>
+		<property name="ban" value="false" />
+
+	</bean>
+
+	<bean id="userAccount18" class="security.UserAccount">
+		<property name="username" value="alejandro" />
+		<property name="password"
+			value="8c52c9ca8a32528c18be9223713a2b45" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="CUSTOMER" />
+				</bean>
+			</list>
+		</property>
+		<property name="ban" value="false" />
+
+	</bean>
+
+
+	<!-- ADMIN -->
+	<bean id="admin" class="domain.Tattooist">
+		<property name="userAccount" ref="userAccount1" />
+		<property name="name" value="admin" />
+		<property name="surName" value="admin" />
+		<property name="postalAddress" value="admin" />
+		<property name="phone" value="951234745" />
+		<property name="email" value="admin@gmail.com" />
+		<property name="pais" value="españa" />
+		<property name="ciudad" value="sevilla" />
+		<property name="messageFolders">
+			<list>
+			</list>
+		</property>
+
+	</bean>
+
+	<!-- TATTOOIST PILOTE -->
+	<bean id="tattooist0" class="domain.Tattooist">
+		<property name="userAccount" ref="userAccount4" />
+		<property name="name" value="Teacher" />
+		<property name="surName" value="Teacher" />
+		<property name="postalAddress" value="14545" />
+		<property name="phone" value="654666675" />
+		<property name="email" value="teacher@gmail.com" />
+		<property name="pais" value="españa" />
+		<property name="ciudad" value="sevilla" />
+		<property name="puntuation" value="0" />
+		<property name="messageFolders">
+			<list>
+			</list>
+		</property>
+
+	</bean>
+
+	<bean id="tattooist1" class="domain.Tattooist">
+		<property name="userAccount" ref="userAccount7" />
+		<property name="name" value="galatic" />
+		<property name="surName" value="galatic" />
+		<property name="postalAddress" value="14545" />
+		<property name="phone" value="923456789" />
+		<property name="email" value="galatic@gmail.com" />
+		<property name="pais" value="españa" />
+		<property name="ciudad" value="sevilla" />
+		<property name="puntuation" value="0" />
+		<property name="messageFolders">
+			<list>
+			</list>
+		</property>
+
+	</bean>
+
+	<bean id="tattooist2" class="domain.Tattooist">
+		<property name="userAccount" ref="userAccount8" />
+		<property name="name" value="la mano" />
+		<property name="surName" value="negra" />
+		<property name="postalAddress" value="14545" />
+		<property name="phone" value="623456456" />
+		<property name="email" value="lamanonegra@gmail.com" />
+		<property name="pais" value="españa" />
+		<property name="ciudad" value="sevilla" />
+		<property name="puntuation" value="0" />
+		<property name="messageFolders">
+			<list>
+			</list>
+		</property>
+
+	</bean>
+
+	<bean id="tattooist3" class="domain.Tattooist">
+		<property name="userAccount" ref="userAccount9" />
+		<property name="name" value="terrero" />
+		<property name="surName" value="castillo" />
+		<property name="postalAddress" value="14545" />
+		<property name="phone" value="624568432" />
+		<property name="email" value="terrerocastillo@gmail.com" />
+		<property name="pais" value="españa" />
+		<property name="ciudad" value="sevilla" />
+		<property name="puntuation" value="0" />
+		<property name="messageFolders">
+			<list>
+			</list>
+		</property>
+
+	</bean>
+
+	<bean id="tattooist4" class="domain.Tattooist">
+		<property name="userAccount" ref="userAccount6" />
+		<property name="name" value="k99c" />
+		<property name="surName" value="k99c" />
+		<property name="postalAddress" value="14545" />
+		<property name="phone" value="623447325" />
+		<property name="email" value="k99c@gmail.com" />
+		<property name="pais" value="españa" />
+		<property name="ciudad" value="sevilla" />
+		<property name="puntuation" value="0" />
+		<property name="messageFolders">
+			<list>
+			</list>
+		</property>
+
+	</bean>
+
+
+	<bean id="customer0" class="domain.Customer">
+		<property name="userAccount" ref="userAccount2" />
+		<property name="name" value="Customer" />
+		<property name="surName" value="Customer" />
+		<property name="postalAddress" value="14545" />
+		<property name="phone" value="654665673" />
+		<property name="email" value="customer@gmail.com" />
+		<property name="pais" value="españa" />
+		<property name="ciudad" value="sevilla" />
+		<property name="messageFolders">
+			<list>
+			</list>
+		</property>
+
+	</bean>
+
+	<bean id="customer1" class="domain.Customer">
+		<property name="userAccount" ref="userAccount10" />
+		<property name="name" value="Manuel" />
+		<property name="surName" value="Santos Cabezas" />
+		<property name="postalAddress" value="14545" />
+		<property name="phone" value="974938299" />
+		<property name="email" value="manuelss@gmail.com" />
+		<property name="pais" value="españa" />
+		<property name="ciudad" value="sevilla" />
+		<property name="messageFolders">
+			<list>
+			</list>
+		</property>
+
+	</bean>
+
+	<bean id="customer2" class="domain.Customer">
+		<property name="userAccount" ref="userAccount11" />
+		<property name="name" value="Francisco" />
+		<property name="surName" value="guillén caro" />
+		<property name="postalAddress" value="14545" />
+		<property name="phone" value="743394255" />
+		<property name="email" value="francicoguillenk99c@gmail.com" />
+		<property name="pais" value="españa" />
+		<property name="ciudad" value="sevilla" />
+		<property name="messageFolders">
+			<list>
+			</list>
+		</property>
+
+	</bean>
+
+	<bean id="customer3" class="domain.Customer">
+		<property name="userAccount" ref="userAccount12" />
+		<property name="name" value="Andrea" />
+		<property name="surName" value="Rosario	Romero" />
+		<property name="postalAddress" value="14545" />
+		<property name="phone" value="733192575" />
+		<property name="email" value="theandre@gmail.com" />
+		<property name="pais" value="españa" />
+		<property name="ciudad" value="sevilla" />
+		<property name="messageFolders">
+			<list>
+			</list>
+		</property>
+
+	</bean>
+
+	<bean id="customer4" class="domain.Customer">
+		<property name="userAccount" ref="userAccount5" />
+		<property name="name" value="Rocío" />
+		<property name="surName" value="Pérez Sánchez" />
+		<property name="postalAddress" value="14545" />
+		<property name="phone" value="733427595" />
+		<property name="email" value="rociopesoan@gmail.com" />
+		<property name="pais" value="españa" />
+		<property name="ciudad" value="sevilla" />
+		<property name="messageFolders">
+			<list>
+				<ref bean="messageFolder700" />
+				<ref bean="messageFolder701" />
+				<ref bean="messageFolder702" />
+				<ref bean="messageFolder703" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="customer5" class="domain.Customer">
+		<property name="userAccount" ref="userAccount13" />
+		<property name="name" value="Rocio" />
+		<property name="surName" value="Gonzalez Valera" />
+		<property name="postalAddress" value="14545" />
+		<property name="phone" value="711111475" />
+		<property name="email" value="rociogonzalezvalera@gmail.com" />
+		<property name="pais" value="españa" />
+		<property name="ciudad" value="sevilla" />
+		<property name="messageFolders">
+			<list>
+			</list>
+		</property>
+
+	</bean>
+
+	<bean id="customer6" class="domain.Customer">
+		<property name="userAccount" ref="userAccount14" />
+		<property name="name" value="Francisco Javier" />
+		<property name="surName" value="Ruiz Perez" />
+		<property name="postalAddress" value="14545" />
+		<property name="phone" value="744408375" />
+		<property name="email" value="franruizperez@gmail.com" />
+		<property name="pais" value="españa" />
+		<property name="ciudad" value="sevilla" />
+		<property name="messageFolders">
+			<list>
+			</list>
+		</property>
+
+	</bean>
+
+	<bean id="customer7" class="domain.Customer">
+		<property name="userAccount" ref="userAccount15" />
+		<property name="name" value="Antonio" />
+		<property name="surName" value="Garcia Labado" />
+		<property name="postalAddress" value="14545" />
+		<property name="phone" value="737854275" />
+		<property name="email" value="antiniogarcialabado@gmail.com" />
+		<property name="pais" value="españa" />
+		<property name="ciudad" value="sevilla" />
+		<property name="messageFolders">
+			<list>
+			</list>
+		</property>
+
+	</bean>
+
+	<bean id="customer8" class="domain.Customer">
+		<property name="userAccount" ref="userAccount16" />
+		<property name="name" value="Sheila" />
+		<property name="surName" value="Garcia Moreno" />
+		<property name="postalAddress" value="14545" />
+		<property name="phone" value="733197709" />
+		<property name="email" value="sheilagarciamoreno@gmail.com" />
+		<property name="pais" value="españa" />
+		<property name="ciudad" value="sevilla" />
+		<property name="messageFolders">
+			<list>
+			</list>
+		</property>
+
+	</bean>
+
+	<bean id="customer9" class="domain.Customer">
+		<property name="userAccount" ref="userAccount17" />
+		<property name="name" value="Manuel Alejandro" />
+		<property name="surName" value="Suarez Hinojosa" />
+		<property name="postalAddress" value="14545" />
+		<property name="phone" value="777442575" />
+		<property name="email" value="suarezhinojosa@gmail.com" />
+		<property name="pais" value="españa" />
+		<property name="ciudad" value="sevilla" />
+		<property name="messageFolders">
+			<list>
+			</list>
+		</property>
+
+	</bean>
+
+	<bean id="customer10" class="domain.Customer">
+		<property name="userAccount" ref="userAccount18" />
+		<property name="name" value="Ruben" />
+		<property name="surName" value="Ternero Vera" />
+		<property name="postalAddress" value="14545" />
+		<property name="phone" value="733190005" />
+		<property name="email" value="rubenternerovera@gmail.com" />
+		<property name="pais" value="españa" />
+		<property name="ciudad" value="sevilla" />
+		<property name="messageFolders">
+			<list>
+			</list>
+		</property>
+
+	</bean>
+
+
+
+	<!-- MESSAGEFOLDER -->
+
+
+
+	<bean id="messageFolder01" class="domain.MessageFolder">
+		<property name="name" value="Reclamaciones" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="tattooist0" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+	<bean id="messageFolder02" class="domain.MessageFolder">
+		<property name="name" value="Bandeja de entrada" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="tattooist0" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+	<bean id="messageFolder03" class="domain.MessageFolder">
+		<property name="name" value="Enviados" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="tattooist0" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+	<bean id="messageFolder04" class="domain.MessageFolder">
+		<property name="name" value="Papelera" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="tattooist0" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+
+
+
+
+
+	<bean id="messageFolder91" class="domain.MessageFolder">
+		<property name="name" value="Reclamaciones" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="customer0" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+	<bean id="messageFolder92" class="domain.MessageFolder">
+		<property name="name" value="Bandeja de entrada" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="customer0" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+	<bean id="messageFolder93" class="domain.MessageFolder">
+		<property name="name" value="Enviados" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="customer0" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+	<bean id="messageFolder94" class="domain.MessageFolder">
+		<property name="name" value="Papelera" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="customer0" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+
+
+
+
+	<bean id="messageFolder11" class="domain.MessageFolder">
+		<property name="name" value="Reclamaciones" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="tattooist1" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+	<bean id="messageFolder12" class="domain.MessageFolder">
+		<property name="name" value="Bandeja de entrada" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="tattooist1" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+	<bean id="messageFolder13" class="domain.MessageFolder">
+		<property name="name" value="Enviados" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="tattooist1" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+	<bean id="messageFolder14" class="domain.MessageFolder">
+		<property name="name" value="Papelera" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="tattooist1" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+
+
+	<bean id="messageFolder21" class="domain.MessageFolder">
+		<property name="name" value="Reclamaciones" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="tattooist2" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+	<bean id="messageFolder22" class="domain.MessageFolder">
+		<property name="name" value="Bandeja de entrada" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="tattooist2" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+	<bean id="messageFolder23" class="domain.MessageFolder">
+		<property name="name" value="Enviados" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="tattooist2" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+	<bean id="messageFolder24" class="domain.MessageFolder">
+		<property name="name" value="Papelera" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="tattooist2" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+
+	<bean id="messageFolder31" class="domain.MessageFolder">
+		<property name="name" value="Reclamaciones" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="tattooist3" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+	<bean id="messageFolder32" class="domain.MessageFolder">
+		<property name="name" value="Bandeja de entrada" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="tattooist3" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+	<bean id="messageFolder33" class="domain.MessageFolder">
+		<property name="name" value="Enviados" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="tattooist3" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+	<bean id="messageFolder34" class="domain.MessageFolder">
+		<property name="name" value="Papelera" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="tattooist3" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+
+	<bean id="messageFolder41" class="domain.MessageFolder">
+		<property name="name" value="Reclamaciones" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="tattooist4" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+	<bean id="messageFolder42" class="domain.MessageFolder">
+		<property name="name" value="Bandeja de entrada" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="tattooist4" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+	<bean id="messageFolder43" class="domain.MessageFolder">
+		<property name="name" value="Enviados" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="tattooist4" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+	<bean id="messageFolder44" class="domain.MessageFolder">
+		<property name="name" value="Papelera" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="tattooist4" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+
+	<bean id="messageFolder51" class="domain.MessageFolder">
+		<property name="name" value="Reclamaciones" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="customer1" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+	<bean id="messageFolder52" class="domain.MessageFolder">
+		<property name="name" value="Bandeja de entrada" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="customer1" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+	<bean id="messageFolder53" class="domain.MessageFolder">
+		<property name="name" value="Enviados" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="customer1" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+	<bean id="messageFolder54" class="domain.MessageFolder">
+		<property name="name" value="Papelera" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="customer1" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+	<bean id="messageFolder61" class="domain.MessageFolder">
+		<property name="name" value="Reclamaciones" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="customer2" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+	<bean id="messageFolder62" class="domain.MessageFolder">
+		<property name="name" value="Bandeja de entrada" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="customer2" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+	<bean id="messageFolder63" class="domain.MessageFolder">
+		<property name="name" value="Enviados" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="customer2" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+	<bean id="messageFolder64" class="domain.MessageFolder">
+		<property name="name" value="Papelera" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="customer2" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+
+	<bean id="messageFolder71" class="domain.MessageFolder">
+		<property name="name" value="Reclamaciones" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="customer3" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+	<bean id="messageFolder72" class="domain.MessageFolder">
+		<property name="name" value="Bandeja de entrada" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="customer3" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+	<bean id="messageFolder73" class="domain.MessageFolder">
+		<property name="name" value="Enviados" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="customer3" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+	<bean id="messageFolder74" class="domain.MessageFolder">
+		<property name="name" value="Papelera" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="customer3" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+
+
+
+
+
+	<bean id="messageFolder75" class="domain.MessageFolder">
+		<property name="name" value="Reclamaciones" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="customer5" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+	<bean id="messageFolder76" class="domain.MessageFolder">
+		<property name="name" value="Bandeja de entrada" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="customer5" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+	<bean id="messageFolder78" class="domain.MessageFolder">
+		<property name="name" value="Enviados" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="customer5" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+	<bean id="messageFolder79" class="domain.MessageFolder">
+		<property name="name" value="Papelera" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="customer5" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+
+
+
+
+
+	<bean id="messageFolder80" class="domain.MessageFolder">
+		<property name="name" value="Reclamaciones" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="customer6" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+	<bean id="messageFolder81" class="domain.MessageFolder">
+		<property name="name" value="Bandeja de entrada" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="customer6" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+	<bean id="messageFolder82" class="domain.MessageFolder">
+		<property name="name" value="Enviados" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="customer6" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+	<bean id="messageFolder83" class="domain.MessageFolder">
+		<property name="name" value="Papelera" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="customer6" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+
+
+
+
+
+	<bean id="messageFolder84" class="domain.MessageFolder">
+		<property name="name" value="Reclamaciones" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="customer7" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+	<bean id="messageFolder85" class="domain.MessageFolder">
+		<property name="name" value="Bandeja de entrada" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="customer7" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+	<bean id="messageFolder86" class="domain.MessageFolder">
+		<property name="name" value="Enviados" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="customer7" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+	<bean id="messageFolder87" class="domain.MessageFolder">
+		<property name="name" value="Papelera" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="customer7" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+
+
+
+
+
+	<bean id="messageFolder88" class="domain.MessageFolder">
+		<property name="name" value="Reclamaciones" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="customer8" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+	<bean id="messageFolder89" class="domain.MessageFolder">
+		<property name="name" value="Bandeja de entrada" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="customer8" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+	<bean id="messageFolder90" class="domain.MessageFolder">
+		<property name="name" value="Enviados" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="customer8" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+	<bean id="messageFolder101" class="domain.MessageFolder">
+		<property name="name" value="Papelera" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="customer8" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+
+
+
+
+
+	<bean id="messageFolder102" class="domain.MessageFolder">
+		<property name="name" value="Reclamaciones" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="customer9" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+	<bean id="messageFolder103" class="domain.MessageFolder">
+		<property name="name" value="Bandeja de entrada" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="customer9" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+	<bean id="messageFolder104" class="domain.MessageFolder">
+		<property name="name" value="Enviados" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="customer9" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+	<bean id="messageFolder95" class="domain.MessageFolder">
+		<property name="name" value="Papelera" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="customer9" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+
+
+
+
+	<bean id="messageFolder96" class="domain.MessageFolder">
+		<property name="name" value="Reclamaciones" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="customer10" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+	<bean id="messageFolder97" class="domain.MessageFolder">
+		<property name="name" value="Bandeja de entrada" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="customer10" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+	<bean id="messageFolder98" class="domain.MessageFolder">
+		<property name="name" value="Enviados" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="customer10" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+	<bean id="messageFolder99" class="domain.MessageFolder">
+		<property name="name" value="Papelera" />
+		<property name="isModificable" value="false" />
+		<property name="actor" ref="customer10" />
+		<property name="messages">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+
+
+
+
+
+
+
+	<!-- MESSAGE -->
+	<bean id="message11" class="domain.Message">
+		<property name="date">
+			<bean factory-bean="FechaHHmm" factory-method="parse">
+				<constructor-arg value="16/03/2018 15:00" />
+			</bean>
+		</property>
+		<property name="subject" value="Reclamación REF:00000000" />
+		<property name="body"
+			value="Se ha registrado con éxito la reclamación REF:00000000" />
+		<!-- <property name="priority" value="NEUTRAL" /> -->
+		<property name="actorSender" ref="admin" />
+		<property name="actorReceiver" ref="tattooist1" />
+		<property name="messageFolder" ref="messageFolder11" />
+	</bean>
+
+	<bean id="message112" class="domain.Message">
+		<property name="date">
+			<bean factory-bean="FechaHHmm" factory-method="parse">
+				<constructor-arg value="17/03/2018 15:00" />
+			</bean>
+		</property>
+		<property name="subject" value="Reclamación REF:00000000" />
+		<property name="body"
+			value="Se ha fallado en contra de su reclamación REF:00000000" />
+		<!-- <property name="priority" value="NEUTRAL" /> -->
+		<property name="actorSender" ref="admin" />
+		<property name="actorReceiver" ref="tattooist1" />
+		<property name="messageFolder" ref="messageFolder11" />
+	</bean>
+
+	<bean id="message12" class="domain.Message">
+		<property name="date">
+			<bean factory-bean="FechaHHmm" factory-method="parse">
+				<constructor-arg value="16/03/2018 15:00" />
+			</bean>
+		</property>
+		<property name="subject" value="Hola!" />
+		<property name="body"
+			value="No soy capaz de encontrar tu tienda por la dirección en Google Maps. ¿Me da alguna pista?" />
+		<!-- <property name="priority" value="LOW" /> -->
+		<property name="actorSender" ref="customer1" />
+		<property name="actorReceiver" ref="tattooist1" />
+		<property name="messageFolder" ref="messageFolder12" />
+	</bean>
+
+	<bean id="message13" class="domain.Message">
+		<property name="date">
+			<bean factory-bean="FechaHHmm" factory-method="parse">
+				<constructor-arg value="16/03/2018 15:00" />
+			</bean>
+		</property>
+		<property name="subject" value="Hola!" />
+		<property name="body"
+			value="Encantado de conocerte. Espero que sean de tu agrado. Para cualquier cosa pásate por la tienda." />
+		<!-- <property name="priority" value="LOW" /> -->
+		<property name="actorSender" ref="tattooist1" />
+		<property name="actorReceiver" ref="customer1" />
+		<property name="messageFolder" ref="messageFolder13" />
+	</bean>
+
+	<bean id="message14" class="domain.Message">
+		<property name="date">
+			<bean factory-bean="FechaHHmm" factory-method="parse">
+				<constructor-arg value="16/03/2018 15:00" />
+			</bean>
+		</property>
+		<property name="subject" value="SPAM!" />
+		<property name="body"
+			value="Compra SPAM, la merjor marca de hamburguesas enlatadas. SPAM!" />
+		<!-- <property name="priority" value="LOW" /> -->
+		<property name="actorSender" ref="customer1" />
+		<property name="actorReceiver" ref="tattooist1" />
+		<property name="messageFolder" ref="messageFolder14" />
+	</bean>
+
+
+	<!-- TAG -->
+	<bean id="tag1" class="domain.Tag">
+		<property name="name" value="Geométrico" />
+	</bean>
+	<bean id="tag2" class="domain.Tag">
+		<property name="name" value="Dotwork" />
+	</bean>
+	<bean id="tag3" class="domain.Tag">
+		<property name="name" value="Trash" />
+	</bean>
+	<bean id="tag4" class="domain.Tag">
+		<property name="name" value="Polka" />
+	</bean>
+	<bean id="tag5" class="domain.Tag">
+		<property name="name" value="Hiperrealismo" />
+	</bean>
+	<bean id="tag6" class="domain.Tag">
+		<property name="name" value="Surrealismo" />
+	</bean>
+	<bean id="tag7" class="domain.Tag">
+		<property name="name" value="Watercolor" />
+	</bean>
+	<bean id="tag8" class="domain.Tag">
+		<property name="name" value="Old School" />
+	</bean>
+	<bean id="tag9" class="domain.Tag">
+		<property name="name" value="Neotradicional" />
+	</bean>
+	<bean id="tag10" class="domain.Tag">
+		<property name="name" value="New School" />
+	</bean>
+	<bean id="tag11" class="domain.Tag">
+		<property name="name" value="Japonés" />
+	</bean>
+	<bean id="tag12" class="domain.Tag">
+		<property name="name" value="Polinesio" />
+	</bean>
+	<bean id="tag13" class="domain.Tag">
+		<property name="name" value="Bosquejo" />
+	</bean>
+	<bean id="tag14" class="domain.Tag">
+		<property name="name" value="Ilustración" />
+	</bean>
+
+	<!--ConfigurationsSystem -->
+	<bean id="ConfigurationsSystem1"
+		class="domain.ConfigurationSystem">
+		<property name="defaultTags">
+			<list>
+				<value>Blackwork</value>
+				<value>Geométrico</value>
+				<value>Dotwork</value>
+				<value>Trash</value>
+				<value>Polka</value>
+				<value>Hiperrealismo</value>
+				<value>Surrealismo</value>
+				<value>Watercolor</value>
+				<value>Old School</value>
+				<value>Neotradicional</value>
+				<value>New School</value>
+				<value>Japonés</value>
+				<value>Polinesio</value>
+				<value>Bosquejo</value>
+				<value>Ilustración</value>
+			</list>
+		</property>
+		<property name="codeDiscounts">
+			<list>
+				<value>190301</value>
+				<value>587895</value>
+
+			</list>
+		</property>
+		<property name="discounts" value="10" />
+		<property name="comission" value="5" />
+	</bean>
+
+	<bean id="tattoo1" class="domain.Tattoo">
+		<property name="name" value="Mickey Mouse" />
+		<!-- <property name="img"></property> -->
+		<property name="ticker" value="190326-AFMNM" />
+		<property name="description" value="Blanco y negro"/>
+		<property name="price" value="20" />
+		<property name="dateUpload">
+			<bean factory-bean="FechaHHmm" factory-method="parse">
+				<constructor-arg value="26/03/2019 11:35" />
+			</bean>
+		</property>
+		<property name="tattooist" ref="tattooist1" />
+		<property name="tags">
+			<list>
+				<ref bean="tag1" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="tattoo2" class="domain.Tattoo">
+		<property name="name" value="Calavera" />
+		<property name="ticker" value="190326-KHRAL" />
+		<property name="description" value="Calavera simulando la muerte"/>
+		<property name="price" value="30" />
+		<property name="dateUpload">
+			<bean factory-bean="FechaHHmm" factory-method="parse">
+				<constructor-arg value="26/03/2019 11:45" />
+			</bean>
+		</property>
+		<property name="tattooist" ref="tattooist1" />
+		<property name="tags">
+			<list>
+				<ref bean="tag2" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="tattoo3" class="domain.Tattoo">
+		<property name="name" value="Flores" />
+		<property name="ticker" value="190326-OGKEL" />
+		<property name="description" value="flores silvestres"/>
+		<property name="price" value="25" />
+		<property name="dateUpload">
+			<bean factory-bean="FechaHHmm" factory-method="parse">
+				<constructor-arg value="26/03/2019 11:49" />
+			</bean>
+		</property>
+		<property name="tattooist" ref="tattooist1" />
+		<property name="tags">
+			<list>
+				<ref bean="tag3" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="tattoo4" class="domain.Tattoo">
+		<property name="name" value="mickey mouse2" />
+		<property name="ticker" value="190326-XBSJF" />
+		<property name="description" value="mickey mouse blanco y negro"/>
+		<property name="price" value="20" />
+		<property name="dateUpload">
+			<bean factory-bean="FechaHHmm" factory-method="parse">
+				<constructor-arg value="26/03/2019 12:05" />
+			</bean>
+		</property>
+		<property name="tattooist" ref="tattooist1" />
+		<property name="tags">
+			<list>
+				<ref bean="tag4" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="tattoo5" class="domain.Tattoo">
+		<property name="name" value="serpiente" />
+		<property name="ticker" value="190325-IRJFL" />
+		<property name="description" value="serpiente sombreada"/>
+		<property name="price" value="30" />
+		<property name="dateUpload">
+			<bean factory-bean="FechaHHmm" factory-method="parse">
+				<constructor-arg value="25/03/2019 18:32" />
+			</bean>
+		</property>
+		<property name="tattooist" ref="tattooist2" />
+		<property name="tags">
+			<list>
+				<ref bean="tag5" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="tattoo6" class="domain.Tattoo">
+		<property name="name" value="Jarrón" />
+		<property name="ticker" value="190325-QBHDK" />
+		<property name="description" value="jarrón roto"/>
+		<property name="price" value="30" />
+		<property name="dateUpload">
+			<bean factory-bean="FechaHHmm" factory-method="parse">
+				<constructor-arg value="25/03/2019 18:29" />
+			</bean>
+		</property>
+		<property name="tattooist" ref="tattooist2" />
+		<property name="tags">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+	<bean id="tattoo7" class="domain.Tattoo">
+		<property name="name" value="buda guatama" />
+		<property name="ticker" value="190325-NCBFY" />
+		<property name="description" value="Buda perteneciente a la familia dhármica"/>
+		<property name="price" value="40" />
+		<property name="dateUpload">
+			<bean factory-bean="FechaHHmm" factory-method="parse">
+				<constructor-arg value="25/03/2019 18:14" />
+			</bean>
+		</property>
+		<property name="tattooist" ref="tattooist2" />
+		<property name="tags">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+
+	<bean id="tattoo8" class="domain.Tattoo">
+		<property name="name" value="flores2" />
+		<property name="ticker" value="190325-OWJZM" />
+		<property name="description" value="flor de loto"/>
+		<property name="price" value="25" />
+		<property name="dateUpload">
+			<bean factory-bean="FechaHHmm" factory-method="parse">
+				<constructor-arg value="25/03/2019 17:55" />
+			</bean>
+		</property>
+		<property name="tattooist" ref="tattooist2" />
+		<property name="tags">
+			<list>
+				<ref bean="tag6" />
+				<ref bean="tag9" />
+				<ref bean="tag10" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="tattoo9" class="domain.Tattoo">
+		<property name="name" value="murciélago" />
+		<property name="ticker" value="190325-LAKSJ" />
+		<property name="description" value="animales"/>
+		<property name="price" value="10" />
+		<property name="dateUpload">
+			<bean factory-bean="FechaHHmm" factory-method="parse">
+				<constructor-arg value="25/03/2019 16:10" />
+			</bean>
+		</property>
+		<property name="tattooist" ref="tattooist4" />
+		<property name="tags">
+			<list>
+				<ref bean="tag7" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="tattoo10" class="domain.Tattoo">
+		<property name="name" value="diablo" />
+		<property name="ticker" value="190325-PENGJ" />
+		<property name="description" value="Diablo punk floral"/>
+		<property name="price" value="20" />
+		<property name="dateUpload">
+			<bean factory-bean="FechaHHmm" factory-method="parse">
+				<constructor-arg value="25/03/2019 16:17" />
+			</bean>
+		</property>
+		<property name="tattooist" ref="tattooist4" />
+		<property name="tags">
+			<list>
+				<ref bean="tag10" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="tattoo11" class="domain.Tattoo">
+		<property name="name" value="dragón" />
+		<property name="ticker" value="190325-KSLDJ" />
+		<property name="description" value="Dragón japonés en blanco y negro"/>
+		<property name="price" value="40" />
+		<property name="dateUpload">
+			<bean factory-bean="FechaHHmm" factory-method="parse">
+				<constructor-arg value="25/03/2019 16:28" />
+			</bean>
+		</property>
+		<property name="tattooist" ref="tattooist4" />
+		<property name="tags">
+			<list>
+				<ref bean="tag11" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="tattoo12" class="domain.Tattoo">
+		<property name="name" value="Geometría" />
+		<property name="ticker" value="190326-DYIEV" />
+		<property name="description" value="Dibujo geométrico"/>
+		<property name="price" value="30" />
+		<property name="dateUpload">
+			<bean factory-bean="FechaHHmm" factory-method="parse">
+				<constructor-arg value="26/03/2019 10:22" />
+			</bean>
+		</property>
+		<property name="tattooist" ref="tattooist3" />
+		<property name="tags">
+			<list>
+				<ref bean="tag12" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="tattoo13" class="domain.Tattoo">
+		<property name="name" value="geometría2" />
+		<property name="ticker" value="190326-LENDU" />
+		<property name="description" value="Dibujo geométrico"/>
+		<property name="price" value="10" />
+		<property name="dateUpload">
+			<bean factory-bean="FechaHHmm" factory-method="parse">
+				<constructor-arg value="26/03/2019 10:01" />
+			</bean>
+		</property>
+		<property name="tattooist" ref="tattooist3" />
+		<property name="tags">
+			<list>
+				<ref bean="tag13" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="tattoo14" class="domain.Tattoo">
+		<property name="name" value="animal" />
+		<property name="ticker" value="190325-LCNBE" />
+		<property name="description" value="Gato geométrico en blanco y negro"/>
+		<property name="price" value="10" />
+		<property name="dateUpload">
+			<bean factory-bean="FechaHHmm" factory-method="parse">
+				<constructor-arg value="26/03/2019 09:24" />
+			</bean>
+		</property>
+		<property name="tattooist" ref="tattooist3" />
+		<property name="tags">
+			<list>
+				<ref bean="tag14" />
+			</list>
+		</property>
+	</bean>
+
+
+
+</beans>

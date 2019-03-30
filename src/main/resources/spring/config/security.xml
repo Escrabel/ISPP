@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+ * security.xml
+ *
+ * Copyright (C) 2017 Universidad de Sevilla
+ * 
+ * The use of this project is hereby constrained to the conditions of the 
+ * TDG Licence, a copy of which you may download from 
+ * http://www.tdg-seville.info/License.html
+ -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:security="http://www.springframework.org/schema/security"	
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd		
+        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd
+    ">
+
+	<!-- Security infrastructure -->
+
+	<bean id="loginService" class="security.LoginService" />
+
+	<bean id="passwordEncoder"
+		class="org.springframework.security.authentication.encoding.Md5PasswordEncoder" />
+
+	<!-- Access control -->
+
+	<security:http auto-config="true" use-expressions="true">
+		<!--  ALL   --> 
+		<security:intercept-url pattern="/" access="permitAll" /> 
+
+		<security:intercept-url pattern="/favicon.ico" access="permitAll" /> 
+		<security:intercept-url pattern="/images/**" access="permitAll" /> 
+		<security:intercept-url pattern="/scripts/**" access="permitAll" /> 
+		<security:intercept-url pattern="/styles/**" access="permitAll" /> 
+
+		<security:intercept-url pattern="/views/misc/index.jsp" access="permitAll" /> 
+
+		<security:intercept-url pattern="/security/login.do" access="permitAll" /> 
+		<security:intercept-url pattern="/security/loginFailure.do" access="permitAll" /> 
+
+		<security:intercept-url pattern="/welcome/index.do" access="permitAll" /> 
+		<security:intercept-url pattern="/term.do" access="permitAll" /> 
+		
+		
+		
+		
+		
+		
+		<!--  ALL   --> 
+		<security:intercept-url pattern="/tattoo/listBest8Rest.do" access="permitAll" />
+		<security:intercept-url pattern="/tattoo/imgFromTattooId.do" access="permitAll" />
+		<security:intercept-url pattern="/tattoo/listFilterRest.do" access="permitAll" />
+		<security:intercept-url pattern="/tattoo/listRest.do" access="permitAll" />
+		<security:intercept-url pattern="/tattoo/list.do" access="permitAll" /> 
+		<security:intercept-url pattern="/tattoo/view.do" access="permitAll" /> 
+
+		<!--  ACTOR   --> 
+		<security:intercept-url pattern="/messageFolder/actor/listRest.do" access="isAuthenticated()" />
+		<security:intercept-url pattern="/messageFolder/actor/list.do" access="isAuthenticated()" /> 
+	  	<security:intercept-url pattern="/messageFolder/actor/edit.do" access="isAuthenticated()" /> 
+	  	<security:intercept-url pattern="/messageFolder/actor/create.do" access="isAuthenticated()" />
+	  	<security:intercept-url pattern="/message/actor/listRest.do" access="isAuthenticated()" />  
+		<security:intercept-url pattern="/message/actor/list.do" access="isAuthenticated()" /> 
+		<security:intercept-url pattern="/message/actor/edit-t.do" access="isAuthenticated()" />  
+		<security:intercept-url pattern="/message/actor/edit-b.do" access="isAuthenticated()" />   
+		<security:intercept-url pattern="/message/actor/edit-r.do" access="isAuthenticated()" />  
+		<security:intercept-url pattern="/message/actor/move.do" access="isAuthenticated()" />  
+		<security:intercept-url pattern="/message/actor/delete.do" access="isAuthenticated()" />  
+		<security:intercept-url pattern="/message/actor/create-b.do" access="isAuthenticated()" />  
+		<security:intercept-url pattern="/message/actor/create-t.do" access="isAuthenticated()" />   
+		<security:intercept-url pattern="/message/actor/create-r.do" access="isAuthenticated()" />   
+		<security:intercept-url pattern="/message/actor/details.do" access="isAuthenticated()" />  
+		
+		<!--  ADMIN   --> 
+		<security:intercept-url pattern="/message/actor/edit-c.do" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/message/actor/create-c.do" access="hasRole('ADMIN')" />
+
+
+		
+		 
+		
+		<!--  CUSTOMER   --> 
+<!-- 		<security:intercept-url pattern="/buy/customer/**" access="hasRole('CUSTOMER')" />  -->
+
+		<security:intercept-url pattern="/tattoo/customer/list.do" access="hasRole('CUSTOMER')" />
+		<security:intercept-url pattern="/tattoo/customer/view.do" access="hasRole('CUSTOMER')" />
+		<security:intercept-url pattern="/data/customer/generate.do" access="hasRole('CUSTOMER')" />
+		<security:intercept-url pattern="/buy/customer/buy.do" access="hasRole('CUSTOMER')" />
+		
+		<security:intercept-url pattern="/customer/customer/delete.do" access="hasRole('CUSTOMER')" /> 
+		
+
+		
+		
+		
+		
+		
+		
+		<!--  TATTOOIST   --> 
+		
+		<security:intercept-url pattern="/tattoo/tattooist/listRest.do" access="hasRole('TATTOOIST')" />
+		<security:intercept-url pattern="/tattoo/tattooist/list.do" access="hasRole('TATTOOIST')" /> 
+		<security:intercept-url pattern="/tattoo/tattooist/create.do" access="hasRole('TATTOOIST')" /> 
+		<security:intercept-url pattern="/tattoo/tattooist/edit.do" access="hasRole('TATTOOIST')" /> 
+		<security:intercept-url pattern="/tattoo/tattooist/view.do" access="hasRole('TATTOOIST')" /> 
+		<security:intercept-url pattern="/tattoo/tattooist/save.do" access="hasRole('TATTOOIST')" /> 
+		<security:intercept-url pattern="/tattoo/tattooist/delete.do" access="hasRole('TATTOOIST')" /> 
+		<security:intercept-url pattern="/data/tattooist/generate.do" access="hasRole('TATTOOIST')" />
+		<security:intercept-url pattern="/tattooist/tattooist/delete.do" access="hasRole('TATTOOIST')" /> 
+		
+
+	
+		
+		<!--  NONE   --> 
+		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
+
+		<security:form-login 
+			login-page="/security/login.do"
+			password-parameter="password" 
+			username-parameter="username"
+			authentication-failure-url="/security/loginFailure.do" />
+
+		<security:logout 
+			logout-success-url="/" 
+			invalidate-session="true" />
+	</security:http>
+
+</beans>

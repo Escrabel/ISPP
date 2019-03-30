@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- * tiles.xml * * Copyright (C) 2018 Universidad de Sevilla * * The use 
+	of this project is hereby constrained to the conditions of the * TDG Licence, 
+	a copy of which you may download from * http://www.tdg-seville.info/License.html -->
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+	<definition name="tattoo/list" extends="master.page">
+		<put-attribute name="title" value="List tattoos" />
+		<put-attribute name="body"
+			value="/views/tattoo/list.jsp" />
+	</definition>
+
+	<definition name="tattoo/edit" extends="master.page">
+		<put-attribute name="title" value="Edit tattoo" />
+		<put-attribute name="body"
+			value="/views/tattoo/edit.jsp" />
+	</definition>
+
+	<definition name="tattoo/create" extends="master.page">
+		<put-attribute name="title" value="Create tattoo" />
+		<put-attribute name="body"
+			value="/views/tattoo/edit.jsp" />
+	</definition>
+
+	<definition name="tattoo/view" extends="master.page">
+		<put-attribute name="title" value="View tattoo" />
+		<put-attribute name="body"
+			value="/views/tattoo/view.jsp" />
+	</definition>
+	
+	
+</tiles-definitions>
