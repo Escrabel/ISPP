@@ -28,20 +28,20 @@
 
 	<security:http auto-config="true" use-expressions="true">
 		<!--  ALL   --> 
-		<security:intercept-url pattern="/" access="permitAll" /> 
+		<security:intercept-url pattern="/" access="permitAll" requires-channel="https"/> 
 
-		<security:intercept-url pattern="/favicon.ico" access="permitAll" /> 
-		<security:intercept-url pattern="/images/**" access="permitAll" /> 
-		<security:intercept-url pattern="/scripts/**" access="permitAll" /> 
-		<security:intercept-url pattern="/styles/**" access="permitAll" /> 
+		<security:intercept-url pattern="/favicon.ico" access="permitAll" requires-channel="https"/> 
+		<security:intercept-url pattern="/images/**" access="permitAll" requires-channel="https"/> 
+		<security:intercept-url pattern="/scripts/**" access="permitAll" requires-channel="https"/> 
+		<security:intercept-url pattern="/styles/**" access="permitAll" requires-channel="https"/> 
 
-		<security:intercept-url pattern="/views/misc/index.jsp" access="permitAll" /> 
+		<security:intercept-url pattern="/views/misc/index.jsp" access="permitAll" requires-channel="https"/> 
 
-		<security:intercept-url pattern="/security/login.do" access="permitAll" /> 
-		<security:intercept-url pattern="/security/loginFailure.do" access="permitAll" /> 
+		<security:intercept-url pattern="/security/login.do" access="permitAll" requires-channel="https"/> 
+		<security:intercept-url pattern="/security/loginFailure.do" access="permitAll" requires-channel="https"/> 
 
-		<security:intercept-url pattern="/welcome/index.do" access="permitAll" /> 
-		<security:intercept-url pattern="/term.do" access="permitAll" /> 
+		<security:intercept-url pattern="/welcome/index.do" access="permitAll" requires-channel="https"/> 
+		<security:intercept-url pattern="/term.do" access="permitAll" requires-channel="https"/> 
 		
 		
 		
@@ -49,47 +49,47 @@
 		
 		
 		<!--  ALL   --> 
-		<security:intercept-url pattern="/tattoo/listBest8Rest.do" access="permitAll" />
-		<security:intercept-url pattern="/tattoo/imgFromTattooId.do" access="permitAll" />
-		<security:intercept-url pattern="/tattoo/listFilterRest.do" access="permitAll" />
-		<security:intercept-url pattern="/tattoo/listRest.do" access="permitAll" />
-		<security:intercept-url pattern="/tattoo/list.do" access="permitAll" /> 
-		<security:intercept-url pattern="/tattoo/view.do" access="permitAll" /> 
+		<security:intercept-url pattern="/tattoo/listBest8Rest.do" access="permitAll" requires-channel="https"/>
+		<security:intercept-url pattern="/tattoo/imgFromTattooId.do" access="permitAll" requires-channel="https"/>
+		<security:intercept-url pattern="/tattoo/listFilterRest.do" access="permitAll" requires-channel="https"/>
+		<security:intercept-url pattern="/tattoo/listRest.do" access="permitAll" requires-channel="https"/>
+		<security:intercept-url pattern="/tattoo/list.do" access="permitAll" requires-channel="https"/> 
+		<security:intercept-url pattern="/tattoo/view.do" access="permitAll" requires-channel="https"/> 
 
 		<!--  ACTOR   --> 
-		<security:intercept-url pattern="/messageFolder/actor/listRest.do" access="isAuthenticated()" />
-		<security:intercept-url pattern="/messageFolder/actor/list.do" access="isAuthenticated()" /> 
-	  	<security:intercept-url pattern="/messageFolder/actor/edit.do" access="isAuthenticated()" /> 
-	  	<security:intercept-url pattern="/messageFolder/actor/create.do" access="isAuthenticated()" />
-	  	<security:intercept-url pattern="/message/actor/listRest.do" access="isAuthenticated()" />  
-		<security:intercept-url pattern="/message/actor/list.do" access="isAuthenticated()" /> 
-		<security:intercept-url pattern="/message/actor/edit-t.do" access="isAuthenticated()" />  
-		<security:intercept-url pattern="/message/actor/edit-b.do" access="isAuthenticated()" />   
-		<security:intercept-url pattern="/message/actor/edit-r.do" access="isAuthenticated()" />  
-		<security:intercept-url pattern="/message/actor/move.do" access="isAuthenticated()" />  
-		<security:intercept-url pattern="/message/actor/delete.do" access="isAuthenticated()" />  
-		<security:intercept-url pattern="/message/actor/create-b.do" access="isAuthenticated()" />  
-		<security:intercept-url pattern="/message/actor/create-t.do" access="isAuthenticated()" />   
-		<security:intercept-url pattern="/message/actor/create-r.do" access="isAuthenticated()" />   
-		<security:intercept-url pattern="/message/actor/details.do" access="isAuthenticated()" />  
+		<security:intercept-url pattern="/messageFolder/actor/listRest.do" access="isAuthenticated()" requires-channel="https"/>
+		<security:intercept-url pattern="/messageFolder/actor/list.do" access="isAuthenticated()" requires-channel="https"/> 
+	  	<security:intercept-url pattern="/messageFolder/actor/edit.do" access="isAuthenticated()" requires-channel="https"/> 
+	  	<security:intercept-url pattern="/messageFolder/actor/create.do" access="isAuthenticated()" requires-channel="https"/>
+	  	<security:intercept-url pattern="/message/actor/listRest.do" access="isAuthenticated()" requires-channel="https"/>  
+		<security:intercept-url pattern="/message/actor/list.do" access="isAuthenticated()" requires-channel="https"/> 
+		<security:intercept-url pattern="/message/actor/edit-t.do" access="isAuthenticated()" requires-channel="https"/>  
+		<security:intercept-url pattern="/message/actor/edit-b.do" access="isAuthenticated()" requires-channel="https"/>   
+		<security:intercept-url pattern="/message/actor/edit-r.do" access="isAuthenticated()" requires-channel="https"/>  
+		<security:intercept-url pattern="/message/actor/move.do" access="isAuthenticated()" requires-channel="https"/>  
+		<security:intercept-url pattern="/message/actor/delete.do" access="isAuthenticated()" requires-channel="https"/>  
+		<security:intercept-url pattern="/message/actor/create-b.do" access="isAuthenticated()" requires-channel="https"/>  
+		<security:intercept-url pattern="/message/actor/create-t.do" access="isAuthenticated()" requires-channel="https"/>   
+		<security:intercept-url pattern="/message/actor/create-r.do" access="isAuthenticated()" requires-channel="https"/>   
+		<security:intercept-url pattern="/message/actor/details.do" access="isAuthenticated()" requires-channel="https"/>  
 		
 		<!--  ADMIN   --> 
-		<security:intercept-url pattern="/message/actor/edit-c.do" access="hasRole('ADMIN')" />
-		<security:intercept-url pattern="/message/actor/create-c.do" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/message/actor/edit-c.do" access="hasRole('ADMIN')" requires-channel="https"/>
+		<security:intercept-url pattern="/message/actor/create-c.do" access="hasRole('ADMIN')" requires-channel="https"/>
 
 
 		
 		 
 		
 		<!--  CUSTOMER   --> 
-<!-- 		<security:intercept-url pattern="/buy/customer/**" access="hasRole('CUSTOMER')" />  -->
+<!-- 		<security:intercept-url pattern="/buy/customer/**" access="hasRole('CUSTOMER')" requires-channel="https"/>  -->
 
-		<security:intercept-url pattern="/tattoo/customer/list.do" access="hasRole('CUSTOMER')" />
-		<security:intercept-url pattern="/tattoo/customer/view.do" access="hasRole('CUSTOMER')" />
-		<security:intercept-url pattern="/data/customer/generate.do" access="hasRole('CUSTOMER')" />
-		<security:intercept-url pattern="/buy/customer/buy.do" access="hasRole('CUSTOMER')" />
+		<security:intercept-url pattern="/tattoo/customer/list.do" access="hasRole('CUSTOMER')" requires-channel="https"/>
+		<security:intercept-url pattern="/tattoo/customer/view.do" access="hasRole('CUSTOMER')" requires-channel="https"/>
+		<security:intercept-url pattern="/data/customer/generate.do" access="hasRole('CUSTOMER')" requires-channel="https"/>
+		<security:intercept-url pattern="/buy/customer/buy.do" access="hasRole('CUSTOMER')" requires-channel="https"/>
 		
-		<security:intercept-url pattern="/customer/customer/delete.do" access="hasRole('CUSTOMER')" /> 
+		<security:intercept-url pattern="/customer/customer/delete.do" access="hasRole('CUSTOMER')" requires-channel="https"/> 
 		
 
 		
@@ -100,21 +100,21 @@
 		
 		<!--  TATTOOIST   --> 
 		
-		<security:intercept-url pattern="/tattoo/tattooist/listRest.do" access="hasRole('TATTOOIST')" />
-		<security:intercept-url pattern="/tattoo/tattooist/list.do" access="hasRole('TATTOOIST')" /> 
-		<security:intercept-url pattern="/tattoo/tattooist/create.do" access="hasRole('TATTOOIST')" /> 
-		<security:intercept-url pattern="/tattoo/tattooist/edit.do" access="hasRole('TATTOOIST')" /> 
-		<security:intercept-url pattern="/tattoo/tattooist/view.do" access="hasRole('TATTOOIST')" /> 
-		<security:intercept-url pattern="/tattoo/tattooist/save.do" access="hasRole('TATTOOIST')" /> 
-		<security:intercept-url pattern="/tattoo/tattooist/delete.do" access="hasRole('TATTOOIST')" /> 
-		<security:intercept-url pattern="/data/tattooist/generate.do" access="hasRole('TATTOOIST')" />
-		<security:intercept-url pattern="/tattooist/tattooist/delete.do" access="hasRole('TATTOOIST')" /> 
+		<security:intercept-url pattern="/tattoo/tattooist/listRest.do" access="hasRole('TATTOOIST')" requires-channel="https"/>
+		<security:intercept-url pattern="/tattoo/tattooist/list.do" access="hasRole('TATTOOIST')" requires-channel="https"/> 
+		<security:intercept-url pattern="/tattoo/tattooist/create.do" access="hasRole('TATTOOIST')" requires-channel="https"/> 
+		<security:intercept-url pattern="/tattoo/tattooist/edit.do" access="hasRole('TATTOOIST')" requires-channel="https"/> 
+		<security:intercept-url pattern="/tattoo/tattooist/view.do" access="hasRole('TATTOOIST')" requires-channel="https"/> 
+		<security:intercept-url pattern="/tattoo/tattooist/save.do" access="hasRole('TATTOOIST')" requires-channel="https"/> 
+		<security:intercept-url pattern="/tattoo/tattooist/delete.do" access="hasRole('TATTOOIST')" requires-channel="https"/> 
+		<security:intercept-url pattern="/data/tattooist/generate.do" access="hasRole('TATTOOIST')" requires-channel="https"/>
+		<security:intercept-url pattern="/tattooist/tattooist/delete.do" access="hasRole('TATTOOIST')" requires-channel="https"/> 
 		
 
 	
 		
 		<!--  NONE   --> 
-		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
+		<security:intercept-url pattern="/**" access="hasRole('NONE')" requires-channel="https"/>
 
 		<security:form-login 
 			login-page="/security/login.do"

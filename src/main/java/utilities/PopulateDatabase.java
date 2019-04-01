@@ -80,29 +80,6 @@ public class PopulateDatabase {
 			}
 		}
 		final TattooJDBCTemplate TattooJDBCTemplate = (TattooJDBCTemplate) populationContext.getBean("TattooJDBCTemplate");
-
-		//		//TODO Añadir las url de las imagenes para los tattoos.
-		//		//TODO Si se ponen mal los nombres de los tatuajes no salta error.
-		//		data:image/png;base64
-		try {
-			TattooJDBCTemplate.updateImage("Mickey Mouse", PopulateDatabase.getBase64Image("01.txt"));
-			TattooJDBCTemplate.updateImage("Calavera", PopulateDatabase.getBase64Image("02.txt"));
-			TattooJDBCTemplate.updateImage("Flores", PopulateDatabase.getBase64Image("03.txt"));
-			TattooJDBCTemplate.updateImage("mickey mouse2", PopulateDatabase.getBase64Image("04.txt"));
-			TattooJDBCTemplate.updateImage("serpiente", PopulateDatabase.getBase64Image("05.txt"));
-			TattooJDBCTemplate.updateImage("Jarrón", PopulateDatabase.getBase64Image("06.txt"));
-			TattooJDBCTemplate.updateImage("buda guatama", PopulateDatabase.getBase64Image("07.txt"));
-			TattooJDBCTemplate.updateImage("flores2", PopulateDatabase.getBase64Image("08.txt"));
-			TattooJDBCTemplate.updateImage("murciélago", PopulateDatabase.getBase64Image("09.txt"));
-			TattooJDBCTemplate.updateImage("diablo", PopulateDatabase.getBase64Image("10.txt"));
-			TattooJDBCTemplate.updateImage("dragón", PopulateDatabase.getBase64Image("11.txt"));
-			TattooJDBCTemplate.updateImage("Geometría", PopulateDatabase.getBase64Image("12.txt"));
-			TattooJDBCTemplate.updateImage("geometría2", PopulateDatabase.getBase64Image("13.txt"));
-			TattooJDBCTemplate.updateImage("animal", PopulateDatabase.getBase64Image("14.txt"));
-		} catch (final IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 
 	private static String getBase64Image(final String path) throws IOException {
